@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #555;
+        }
+        .data {
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .data label {
+            font-weight: bold;
+            margin-right: 10px;
+            color: #333;
+        }
+        .data p {
+            margin: 0;
+            color: #666;
+        }
+        .prediction {
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 30px;
+        }
+        .prediction.yes {
+            color: #ff4d4d;
+        }
+        .prediction.no {
+            color: #339933;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Heart Disease Prediction Report</h1>
+        <div class="section">
+            <h2 class="section-title">Patient Information</h2>
+            <div class="data">
+                <label>Patient Name:</label>
+                <p>{{ report_data["name"] }}</p>
+            </div>
+            <div class="data">
+                <label>Contact Information:</label>
+                <p>{{ report_data["contact"] }}</p>
+            </div>
+            <div class="data">
+                <label>Patient ID:</label>
+                <p>{{ report_data["patient_id"] }}</p>
+            </div>
+        </div>
+        <div class="section">
+            <h2 class="section-title">Prediction Result</h2>
+            <p class="prediction {% if report_data['prediction_result'] == 'Sorry! it seems you are at risk of heart disease. Please consult a doctor immediately.' %}yes{% else %}no{% endif %}">
+                {{ report_data["prediction_result"] }}
+            </p>
+        </div>
+        <div class="section">
+            <h2 class="section-title">Patient Test Data</h2>
+            <div class="data">
+                <label>Age:</label>
+                <p>{{ input_data["age"] }}</p>
+            </div>
+            <div class="data">
+                <label>Sex:</label>
+                <p>{{ "Male" if input_data["sex"] == "1" else "Female" }}</p>
+            </div>
+            <!-- Include other input fields here -->
+     
+                <div class="data">
+                    <label>Chest Pain Type:</label>
+                    <p>{{ report_data["chest_pain_type"] }}</p>
+                </div>
+                <div class="data">
+                    <label>Resting Blood Pressure <small>normal RBP(120/80)</small>: </label>
+                    <p>{{ report_data["resting_blood_pressure"] }}</p>
+                </div>
+                <div class="data">
+                    <label>Serum Cholesterol:</label>
+                    <p>{{ report_data["serum_cholesterol"] }}</p>
+                </div>
+                <div class="data">
+                    <label>Fasting Blood Sugar:</label>
+                    <p>{{ report_data["fasting_blood_sugar"] }}</p>
+                </div>
+                <div class="data">
+                    <label>Rest ECG:</label>
+                    <p>{{ report_data["rest_ecg"] }}</p>
+                </div>
+                <div class="data">
+                    <label>Max Heart Rate:</label>
+                    <p>{{ report_data["max_heart_rate"] }}</p>
+                </div>
+                <div class="data">
+                    <label>Exercise Induced Angina:</label>
+                    <p>{{ report_data["exercise_induced_angina"] }}</p>
+                </div>
+                <div class="data">
+                    <label>ST Depression:</label>
+                    <p>{{ report_data["st_depression"] }}</p>
+                </div>
+                <div class="data">
+                    <label>Slope of Peak Exercise ST Segment:</label>
+                    <p>{{ report_data["slope_of_peak_exercise_st_segment"] }}</p>
+                </div>
+                <div class="data">
+                    <label>Num Major Vessels Colored by Flourosopy:</label>
+                    <p>{{ report_data["num_major_vessels_colored_by_flourosopy"] }}</p>
+                </div>
+                <div class="data">
+                    <label>Thalium Stress Result:</label>
+                    <p>{{ report_data["thalium_stress_result"] }}</p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>
+
